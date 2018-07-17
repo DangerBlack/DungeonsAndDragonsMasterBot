@@ -3,7 +3,7 @@ A simple D&amp;D 5.0 Telegram Bot, create npc, tresure, etc..
 
 ## Usage
 
-Connect with [@DungeonsAndDragonsMasterBot](telegram.me/DungeonsAndDragonsMasterBot) on Telegram e just chat with the bot.
+Connect with [@DungeonsAndDragonsMasterBot](https://telegram.me/DungeonsAndDragonsMasterBot) on Telegram e just chat with the bot.
 
 If you want self host your bot just create secret.txt and past the BotFather key.
 
