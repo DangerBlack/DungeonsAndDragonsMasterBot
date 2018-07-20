@@ -93,7 +93,8 @@ def getCityDetail(size):
         people+= random.randint(-1000,1000)
     else:
         people= random.randint(100,2000)
-    out = "<b>Name:</b> "+random.choice(CITY_NAMES)+"\n"
+    name = random.choice(CITY_NAMES)
+    out = "<b>Name:</b> "+name+"\n"
     out+= "<b>People:</b> "+str(people)+"\n"
     out+="<b>Buildings:</b>\n<pre>\n"
     i = 1
@@ -106,4 +107,4 @@ def getCityDetail(size):
                 out+= " | "
             i+=1
     out+="</pre>"
-    return out
+    return [people,name,out]
