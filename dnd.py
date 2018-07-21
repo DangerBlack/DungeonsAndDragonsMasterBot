@@ -106,19 +106,24 @@ def process_level_step(message):
 
 
 def getRace(detail):
-    race = ["Aarakocra","Dragonborn","Dwarf (Hill)","Dwarf (Mountain)","Elf (Drow)","Elf (High)","Elf (Wood)","Genasi (Air)","Genasi (Earth)","Genasi (Fire)","Genasi (Water)","Gnome (Forest)","Gnome (Rock)","Gnome (Svirfneblin)","Goliath","Half-Elf","Half-Orc","Halfling (Lightfoot)","Halfling (Stout)","Human","Tiefling"]
+    race = ["Aarakocra", "Dragonborn", "Hill Dwarf", "Mountain Dwarf", "Drow Elf", "High Elf", "Wood Elf", "Air Genasi", "Earth Genasi", "Fire Genasi", "Water Genasi", "Forest Gnome", "Rock Gnome", "Svirfneblin Gnome", "Goliath", "Half-Elf", "Half-Orc", "Lightfoot Halfling", "Stout Halfling", "Human", "Tiefling"]
+    rd = len(race)
+    race_dist = [100/rd, 100/rd, 50/rd, 50/rd, 100/3/rd, 100/3/rd, 100/3/rd, 100/4/rd, 100/4/rd, 100/4/rd, 100/4/rd, 100/3/rd, 100/3/rd, 100/3/rd, 100/rd, 100/rd, 100/2/rd, 100/2/rd, 100/rd, 100/rd]
     if(detail=="random"):
-        return random.choice(race)
+        return describe_city.wc(race,race_dist)
     for r in race:
-        if(detail.find(r)):
+        if not detail.find(r)==-1:
             return r
+    return ""
+    
 def getClass(detail):
-    classi = ["Barbarian","Bard","Cleric","Druid","Fighter (Eldritch Knight)","Fighter (High Dexterity)","Fighter (High Strength)","Monk","Paladin","Ranger","Rogue (Thief or Assassin)","Rogue (Arcane Trickster)","Sorcerer","Warlock","Wizard"]
+    classi = ["Barbarian","Bard","Cleric","Druid","Fighter (Eldritch Knight)","Fighter (High Dexterity)","Fighter (High Strength)","Monk","Paladin","Ranger","Rogue (Thief or Assassin)","Rogue (Arcane Trickster)","Rogue","Sorcerer","Warlock","Wizard"]
     if(detail=="random"):
-        return random.choice(race)
+        return random.choice(classi)
     for c in classi:
-        if(detail.find(c)):
+        if not detail.find(c)==-1:
             return c
+    return ""
     
 def process_gender_step(message,level):
     try:
@@ -292,7 +297,7 @@ def send_map_creation_message(chat_id,size,decision):
 @bot.message_handler(commands=['picture'])
 def send_response(message):
     race = getRace("random")
-    clas = getRace("random")
+    clas = getClass("random")
     sex = random.choice(['Male','Female'])
     level = random.randint(1,20)
     ask_token_info(message,race, clas, sex, level)

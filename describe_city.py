@@ -68,7 +68,7 @@ def iv(size):
 	return random.randint(0,20)+random.randint(0,int(size/20))
 
 def wc(group,weight):
-	r = random.randint(0,100)
+	r = random.uniform(0,100)
 	acc = 0
 	for i in range(0,len(weight)):
 		acc+= weight[i]
