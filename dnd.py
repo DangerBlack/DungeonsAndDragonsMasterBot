@@ -107,8 +107,8 @@ def process_level_step(message):
 
 def getRace(detail):
     race = ["Aarakocra", "Dragonborn", "Hill Dwarf", "Mountain Dwarf", "Drow Elf", "High Elf", "Wood Elf", "Air Genasi", "Earth Genasi", "Fire Genasi", "Water Genasi", "Forest Gnome", "Rock Gnome", "Svirfneblin Gnome", "Goliath", "Half-Elf", "Half-Orc", "Lightfoot Halfling", "Stout Halfling", "Human", "Tiefling"]
-    rd = len(race)
-    race_dist = [100/rd, 100/rd, 50/rd, 50/rd, 100/3/rd, 100/3/rd, 100/3/rd, 100/4/rd, 100/4/rd, 100/4/rd, 100/4/rd, 100/3/rd, 100/3/rd, 100/3/rd, 100/rd, 100/rd, 100/2/rd, 100/2/rd, 100/rd, 100/rd]
+    rd = float(12) #len(race)
+    race_dist = [100/rd, 100/rd, 50/rd, 50/rd,  100/3/rd, 100/3/rd, 100/3/rd, 100/4/rd,  100/4/rd,  100/4/rd, 100/4/rd, 100/3/rd, 100/3/rd, 100/3/rd,  100/rd, 100/rd, 100/rd,  100/2/rd, 100/2/rd, 100/rd, 100/rd]
     if(detail=="random"):
         return describe_city.wc(race,race_dist)
     for r in race:
