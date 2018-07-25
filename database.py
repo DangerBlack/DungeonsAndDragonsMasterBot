@@ -24,7 +24,7 @@ def createDatabase():
 def insertNPC(name, race,classe,sex,level,image,legit):
 	c, conn = getConnection()
 	date = now()
-	c.execute("INSERT INTO npc VALUES ('"+date+"','"+str(name)+"','"+race+"','"+classe+"','"+sex+"','"+str(level)+"','"+image+"','"+str(legit)+"')")
+	c.execute("INSERT INTO npc VALUES (?,?,?,?,?,?,?,?)",(date,str(name),race,classe,sex,str(level),image,str(legit)))
 	conn.commit()
 	conn.close()
 
@@ -32,7 +32,7 @@ def findNPC(race, classe, sex,level):
 	c, conn = getConnection()
 	date = now()
 	#select image, SUM(legit) as l FROM npc WHERE race='Elf' AND class='Bard' AND sex='Male' GROUP BY image HAVING l>5 ORDER BY SUM(legit) DESC;
-	c.execute("select image, avg(legit) as l FROM npc WHERE race='"+race+"' AND class='"+classe+"' AND sex='"+sex+"' GROUP BY image HAVING l > 5 ORDER BY SUM(legit) DESC;")
+	c.execute("select image, avg(legit) as l FROM npc WHERE race=(?) AND class=(?) AND sex=(?) GROUP BY image HAVING l > 5 ORDER BY SUM(legit) DESC",(race,classe,sex))
 	conn.commit()
 	out = c.fetchmany(5)
 	conn.close()
@@ -41,7 +41,7 @@ def findNPC(race, classe, sex,level):
 def insertUsage(user, command):
 	c, conn = getConnection()
 	date = now()
-	c.execute("INSERT INTO usage (date,user,command) VALUES ('"+date+"','"+str(user)+"','"+command+"')")
+	c.execute("INSERT INTO usage (date,user,command) VALUES (?,?,?)",(date,str(user),command))
 	conn.commit()
 	conn.close()
 
